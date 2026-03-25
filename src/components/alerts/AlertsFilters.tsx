@@ -4,7 +4,7 @@ import { areAlertsFiltersEqual, type AlertsTableFilterState } from "../../domain
 import type { AlertSeverity } from "../../types";
 import StatusStripePill from "../StatusStripePill";
 
-type PileOption = { pileId: string; pileName: string };
+type PileOption = { pileId: string; pileName: string; siteName: string; label: string };
 
 const FILTER_SECTION_HEADER_CLASS_NAME =
   "flex min-h-9 items-center justify-between gap-3";
@@ -256,7 +256,7 @@ export default function AlertsFilters({
                     />
                   </div>
                   <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-                    {pileOptions.map(({ pileId, pileName }) => (
+                    {pileOptions.map(({ pileId, label }) => (
                       <label key={pileId} className={FILTER_TILE_CLASS_NAME}>
                         <input
                           type="checkbox"
@@ -265,7 +265,7 @@ export default function AlertsFilters({
                           onChange={handlePileChange}
                           className="border-border accent-accent size-3.5 shrink-0 rounded"
                         />
-                        <span className="text-foreground truncate">{pileName}</span>
+                        <span className="text-foreground truncate">{label}</span>
                       </label>
                     ))}
                   </div>

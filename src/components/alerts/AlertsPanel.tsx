@@ -106,7 +106,10 @@ function AlertRow({ alert }: { alert: OperatorAlert }) {
           {severityLabel(alert.severity)}
         </StatusStripePill>
       </td>
-      <td className="text-foreground align-top py-3 pr-4 text-sm font-medium">{alert.pileName}</td>
+      <td className="align-top py-3 pr-4">
+        <div className="text-foreground text-sm font-medium leading-snug">{alert.siteName}</div>
+        <div className="text-muted-foreground mt-0.5 text-sm leading-snug">{alert.pileName}</div>
+      </td>
       <td className="align-top py-3 pr-4">
         <div className="text-foreground text-sm font-medium leading-snug">{alert.title}</div>
         <p className="text-muted-foreground mt-1 max-w-xl text-xs leading-relaxed">
@@ -172,13 +175,25 @@ export default function AlertsPanel({ alerts }: AlertsPanelProps) {
   }>({ column: "severity", dir: "asc" });
 
   const pileOptions = useMemo(() => {
-    const m = new Map<string, string>();
+    const m = new Map<
+      string,
+      { pileId: string; pileName: string; siteName: string; label: string }
+    >();
     for (const a of alerts) {
-      if (!m.has(a.pileId)) m.set(a.pileId, a.pileName);
+      if (!m.has(a.pileId)) {
+        m.set(a.pileId, {
+          pileId: a.pileId,
+          pileName: a.pileName,
+          siteName: a.siteName,
+          label: `${a.siteName} — ${a.pileName}`
+        });
+      }
     }
-    return [...m.entries()]
-      .map(([pileId, pileName]) => ({ pileId, pileName }))
-      .sort((a, b) => a.pileName.localeCompare(b.pileName, undefined, { sensitivity: "base" }));
+    return [...m.values()].sort((a, b) => {
+      const bySite = a.siteName.localeCompare(b.siteName, undefined, { sensitivity: "base" });
+      if (bySite !== 0) return bySite;
+      return a.pileName.localeCompare(b.pileName, undefined, { sensitivity: "base" });
+    });
   }, [alerts]);
 
   const filteredAlerts = useMemo(() => filterAlertsTable(alerts, filters), [alerts, filters]);

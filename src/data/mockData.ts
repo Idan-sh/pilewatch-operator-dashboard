@@ -2,7 +2,7 @@
  * Task 2 mock data - values from the agriQ take-home PDF (Emek North/South/East/West).
  */
 
-import type { OperatorAlert, PileMock, SensorLayer, SensorReading } from "../types";
+import type { OperatorAlert, PileMock, SensorLayer, SensorReading, SiteMock } from "../types";
 
 function layerForIndex(i: number): SensorLayer {
   if (i <= 10) return "bottom";
@@ -53,9 +53,12 @@ function buildSensors(
   return out;
 }
 
+const EMEK_HEFER_HARISH_7_ID = "emek-hefer-harish-7";
+
 /** PDF: Emek North OK - most sensors 21°C / 12.5%; no problem sensors */
 const emekNorth: PileMock = {
   id: "emek-north",
+  siteId: EMEK_HEFER_HARISH_7_ID,
   name: "Emek North",
   status: "OK",
   aggregateTempC: 21,
@@ -66,6 +69,7 @@ const emekNorth: PileMock = {
 /** PDF: Warning - most 28°C / 13.2%; S01-S04 bottom 44°C / 16.1% */
 const emekSouth: PileMock = {
   id: "emek-south",
+  siteId: EMEK_HEFER_HARISH_7_ID,
   name: "Emek South",
   status: "Warning",
   aggregateTempC: 28,
@@ -81,6 +85,7 @@ const emekSouth: PileMock = {
 /** PDF: Critical - most 26°C / 13.0%; S11-S15 middle 51°C / 18.4%; S28 top erratic */
 const emekEast: PileMock = {
   id: "emek-east",
+  siteId: EMEK_HEFER_HARISH_7_ID,
   name: "Emek East",
   status: "Critical",
   aggregateTempC: 26,
@@ -98,6 +103,7 @@ const emekEast: PileMock = {
 /** PDF: Warning - most 35°C / 14.8%; S06-S08 bottom 39°C / 16.2% */
 const emekWest: PileMock = {
   id: "emek-west",
+  siteId: EMEK_HEFER_HARISH_7_ID,
   name: "Emek West",
   status: "Warning",
   aggregateTempC: 35,
@@ -109,21 +115,49 @@ const emekWest: PileMock = {
   })
 };
 
-export const MOCK_PILES: PileMock[] = [emekNorth, emekSouth, emekEast, emekWest];
+const emekHeferHarish7: SiteMock = {
+  id: EMEK_HEFER_HARISH_7_ID,
+  name: "Emek Hefer — Harish 7",
+  locationLine: "Emek Hefer Industrial Park, Israel",
+  cellFootprintLabel: "50m × 25m × 10m high",
+  piles: [emekNorth, emekSouth, emekEast, emekWest]
+};
 
+export const MOCK_SITES: SiteMock[] = [emekHeferHarish7];
+
+export function getSites(): SiteMock[] {
+  return MOCK_SITES;
+}
+
+export function getSiteById(id: string): SiteMock | undefined {
+  return MOCK_SITES.find((s) => s.id === id);
+}
+
+export function getPilesForSite(siteId: string): PileMock[] {
+  return getSiteById(siteId)?.piles ?? [];
+}
+
+/** All piles across sites (pile ids remain globally unique). */
 export function getPiles(): PileMock[] {
-  return MOCK_PILES;
+  return MOCK_SITES.flatMap((s) => s.piles);
 }
 
 export function getPileById(id: string): PileMock | undefined {
-  return MOCK_PILES.find((p) => p.id === id);
+  for (const site of MOCK_SITES) {
+    const p = site.piles.find((x) => x.id === id);
+    if (p) return p;
+  }
+  return undefined;
 }
 
 /** Active alerts derived from the mock scenario (PDF narrative). */
 export function getActiveAlerts(): OperatorAlert[] {
+  const siteName = emekHeferHarish7.name;
   return [
     {
       id: "alert-south-bottom",
+      siteId: emekHeferHarish7.id,
+      siteName,
       pileId: emekSouth.id,
       pileName: emekSouth.name,
       severity: "warning",
@@ -138,6 +172,8 @@ export function getActiveAlerts(): OperatorAlert[] {
     },
     {
       id: "alert-east-middle",
+      siteId: emekHeferHarish7.id,
+      siteName,
       pileId: emekEast.id,
       pileName: emekEast.name,
       severity: "critical",
@@ -152,6 +188,8 @@ export function getActiveAlerts(): OperatorAlert[] {
     },
     {
       id: "alert-east-s28",
+      siteId: emekHeferHarish7.id,
+      siteName,
       pileId: emekEast.id,
       pileName: emekEast.name,
       severity: "critical",
@@ -166,6 +204,8 @@ export function getActiveAlerts(): OperatorAlert[] {
     },
     {
       id: "alert-west-bottom",
+      siteId: emekHeferHarish7.id,
+      siteName,
       pileId: emekWest.id,
       pileName: emekWest.name,
       severity: "warning",
