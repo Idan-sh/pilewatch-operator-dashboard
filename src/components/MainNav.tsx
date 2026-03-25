@@ -23,10 +23,10 @@ export default function MainNav({ alertCount, alertsNavAriaLabel }: MainNavProps
             end
             className={({ isActive }) =>
               [
-                "relative z-10 inline-flex min-h-[2.5rem] items-center rounded-control px-3 py-2 text-sm font-medium outline-none transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:min-h-[2.75rem]",
+                "group relative z-10 inline-flex min-h-[2.5rem] items-center rounded-control px-3 py-2 text-sm font-medium outline-none transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:min-h-[2.75rem]",
                 isActive
-                  ? "text-foreground ring-1 ring-transparent hover:ring-accent/40"
-                  : "text-foreground hover:bg-card"
+                  ? "text-foreground"
+                  : "text-foreground hover:bg-accent-soft"
               ].join(" ")
             }
           >
@@ -35,7 +35,7 @@ export default function MainNav({ alertCount, alertsNavAriaLabel }: MainNavProps
                 {isActive ? (
                   <motion.div
                     layoutId="main-nav-active"
-                    className="border-border bg-background absolute inset-0 rounded-control border"
+                    className="border-border bg-background group-hover:bg-accent-soft absolute inset-0 rounded-control border transition-colors duration-150"
                     transition={PILL_LAYOUT_TRANSITION}
                     aria-hidden
                   />
@@ -52,10 +52,10 @@ export default function MainNav({ alertCount, alertsNavAriaLabel }: MainNavProps
             aria-label={alertsNavAriaLabel}
             className={({ isActive }) =>
               [
-                "relative z-10 inline-flex min-h-[2.5rem] items-center gap-2 rounded-control px-3 py-2 text-sm font-medium outline-none transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:min-h-[2.75rem]",
+                "group relative z-10 inline-flex min-h-[2.5rem] items-center gap-2 rounded-control px-3 py-2 text-sm font-medium outline-none transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:min-h-[2.75rem]",
                 isActive
-                  ? "text-foreground ring-1 ring-transparent hover:ring-accent/40"
-                  : "text-foreground hover:bg-card"
+                  ? "text-foreground"
+                  : "text-foreground hover:bg-accent-soft"
               ].join(" ")
             }
           >
@@ -64,7 +64,7 @@ export default function MainNav({ alertCount, alertsNavAriaLabel }: MainNavProps
                 {isActive ? (
                   <motion.div
                     layoutId="main-nav-active"
-                    className="border-border bg-background absolute inset-0 rounded-control border"
+                    className="border-border bg-background group-hover:bg-accent-soft absolute inset-0 rounded-control border transition-colors duration-150"
                     transition={PILL_LAYOUT_TRANSITION}
                     aria-hidden
                   />
