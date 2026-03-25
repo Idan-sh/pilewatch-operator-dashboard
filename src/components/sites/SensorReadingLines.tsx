@@ -10,7 +10,7 @@ export function TemperatureMetricLine({ celsius }: { celsius: number }) {
   const severity = getTemperatureSeverity(celsius);
   return (
     <div
-      className={`tabular-nums ${readingSeverityMutedTextClass(severity)}`}
+      className={`min-h-5 leading-5 tabular-nums ${readingSeverityMutedTextClass(severity)}`}
       title={`${celsius}°C - ${readingSeverityBandLabel(severity)} (temperature)`}
     >
       {celsius}°C
@@ -22,7 +22,7 @@ export function MoistureMetricLine({ moisturePct }: { moisturePct: number }) {
   const severity = getMoistureSeverity(moisturePct);
   return (
     <div
-      className={`tabular-nums ${readingSeverityMutedTextClass(severity)}`}
+      className={`min-h-5 leading-5 tabular-nums ${readingSeverityMutedTextClass(severity)}`}
       title={`${moisturePct}% moisture - ${readingSeverityBandLabel(severity)} (moisture)`}
     >
       {moisturePct}% moisture
@@ -43,7 +43,7 @@ export default function SensorReadingLines({ reading: s }: { reading: SensorRead
     return <span className="text-muted-foreground">No reading</span>;
   }
   return (
-    <div className="space-y-0.5">
+    <div className="flex min-w-0 flex-col gap-0.5 break-words">
       <TemperatureMetricLine celsius={s.temperatureC} />
       <MoistureMetricLine moisturePct={s.moisturePct} />
     </div>

@@ -117,7 +117,7 @@ const emekWest: PileMock = {
 
 const emekHeferHarish7: SiteMock = {
   id: EMEK_HEFER_HARISH_7_ID,
-  name: "Emek Hefer — Harish 7",
+  name: "Emek Hefer - Harish 7",
   locationLine: "Emek Hefer Industrial Park, Israel",
   cellFootprintLabel: "50m × 25m × 10m high",
   piles: [emekNorth, emekSouth, emekEast, emekWest]

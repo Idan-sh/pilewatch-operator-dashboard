@@ -40,7 +40,7 @@ export function readingSeverityMutedTextClass(severity: ReadingSeverity): string
     case "warning":
       return "text-foreground/90";
     case "critical":
-      return "text-foreground font-medium";
+      return "text-foreground";
     default:
       return "text-muted-foreground";
   }

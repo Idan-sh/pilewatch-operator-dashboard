@@ -2,14 +2,15 @@ import { useMemo } from "react";
 import type { PileMock, SensorLayer, SensorReading } from "../../types";
 import SensorReadingLines from "./SensorReadingLines";
 
+/** Inset stripe (not border-l) keeps the same inner width as normal tiles so metric lines don’t wrap. */
 function getSensorTileClassName(s: SensorReading): string {
   const base =
-    "border-border rounded-surface border bg-card p-3 text-left text-sm transition-colors";
+    "border-border min-w-0 rounded-surface border bg-card p-3 text-left text-sm transition-colors";
   if (s.health === "faulty") {
-    return `${base} border-l-4 border-l-status-critical bg-status-critical/10`;
+    return `${base} bg-status-critical/10 shadow-[inset_4px_0_0_0_var(--color-status-critical)]`;
   }
   if (s.health === "elevated") {
-    return `${base} border-l-4 border-l-status-warn bg-status-warn/10`;
+    return `${base} bg-status-warn/10 shadow-[inset_4px_0_0_0_var(--color-status-warn)]`;
   }
   return `${base}`;
 }
@@ -48,7 +49,7 @@ export default function SitesSensorGrid({ pile }: { pile: PileMock }) {
             {byLayer[layer].map((s) => (
               <div key={s.id} className={getSensorTileClassName(s)}>
                 <div className="text-foreground font-mono text-xs font-semibold">{s.id}</div>
-                <div className="mt-1 text-xs leading-snug">
+                <div className="text-xs mt-1 min-w-0">
                   <SensorReadingLines reading={s} />
                 </div>
               </div>

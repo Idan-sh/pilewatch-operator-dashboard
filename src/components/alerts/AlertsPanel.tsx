@@ -1,5 +1,13 @@
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type MouseEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+  type MouseEvent
+} from "react";
 import {
   type AlertSortColumn,
   type AlertsTableFilterState,
@@ -59,7 +67,11 @@ function SortableTh({
   const ariaSort = active ? (sortDir === "asc" ? "ascending" : "descending") : "none";
 
   return (
-    <th scope="col" className="text-muted-foreground px-4 py-2.5 pr-3 font-medium" aria-sort={ariaSort}>
+    <th
+      scope="col"
+      className="text-muted-foreground px-4 py-2.5 pr-3 font-medium"
+      aria-sort={ariaSort}
+    >
       <button
         type="button"
         data-sort-col={column}
@@ -99,10 +111,7 @@ function AlertRow({ alert }: { alert: OperatorAlert }) {
   return (
     <tr className="border-border border-b transition-colors last:border-b-0 hover:bg-card/60">
       <td className={["align-top border-l-4 py-3 pl-4 pr-3", leftBorder].join(" ")}>
-        <StatusStripePill
-          tone={alertSeverityToTone(alert.severity)}
-          className="whitespace-nowrap"
-        >
+        <StatusStripePill tone={alertSeverityToTone(alert.severity)} className="whitespace-nowrap">
           {severityLabel(alert.severity)}
         </StatusStripePill>
       </td>
@@ -157,7 +166,9 @@ type AlertsPanelProps = {
 };
 
 export default function AlertsPanel({ alerts }: AlertsPanelProps) {
-  const [filters, setFilters] = useState<AlertsTableFilterState>(() => buildDefaultAlertsFilters(alerts));
+  const [filters, setFilters] = useState<AlertsTableFilterState>(() =>
+    buildDefaultAlertsFilters(alerts)
+  );
 
   useEffect(() => {
     setFilters(buildDefaultAlertsFilters(alerts));
@@ -185,7 +196,7 @@ export default function AlertsPanel({ alerts }: AlertsPanelProps) {
           pileId: a.pileId,
           pileName: a.pileName,
           siteName: a.siteName,
-          label: `${a.siteName} — ${a.pileName}`
+          label: `${a.siteName} - ${a.pileName}`
         });
       }
     }

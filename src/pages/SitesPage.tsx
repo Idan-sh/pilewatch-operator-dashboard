@@ -66,32 +66,26 @@ export default function SitesPage() {
     [sortedPiles]
   );
 
-  const selected = useMemo(
-    () => (selectedId ? getPileById(selectedId) : undefined),
-    [selectedId]
-  );
+  const selected = useMemo(() => (selectedId ? getPileById(selectedId) : undefined), [selectedId]);
 
   const listSelectedId = selectedId ?? "";
   const siteSelectId = useId();
 
-  const siteOptions = useMemo(
-    () => sites.map((s) => ({ value: s.id, label: s.name })),
-    [sites]
-  );
+  const siteOptions = useMemo(() => sites.map((s) => ({ value: s.id, label: s.name })), [sites]);
 
   return (
     <div>
       <h1 className="text-foreground mb-2 text-2xl font-semibold tracking-tight">Sites</h1>
       <p className="text-muted-foreground mb-4 max-w-2xl text-base">
         Each storage site has one cell with wheat piles. Select a pile to see all thirty sensors
-        (bottom, middle, top). Warning (amber) and critical (red) tints mark sensors with elevated or
-        faulty health.
+        (bottom, middle, top). Warning (amber) and critical (red) tints mark sensors with elevated
+        or faulty health.
       </p>
       <p className="text-muted-foreground mb-8 max-w-2xl border-border border-l-2 pl-3 text-xs leading-relaxed">
-        <span className="text-foreground font-medium">Thresholds</span> — Temperature and moisture
+        <span className="text-foreground font-medium">Thresholds</span> - Temperature and moisture
         each use OK / warning / critical bands from the assignment rules. Stronger type weight on a
-        value means a higher band; hover a number for the exact band name. Problem sensors are called
-        out in the grid copy.
+        value means a higher band; hover a number for the exact band name. Problem sensors are
+        called out in the grid copy.
       </p>
 
       <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
