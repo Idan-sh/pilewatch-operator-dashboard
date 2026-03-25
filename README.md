@@ -14,7 +14,7 @@ npm install
 npm run dev
 ```
 
-Then open the URL from the terminal (usually **http://localhost:5173**). Use **Sites** and **Alerts** in the header.
+Then open the URL from the terminal (usually **http://localhost:5173**). Use **Sites** and **Alerts** in the header. Use the **Theme** control (Light / Dark / System) to match your preference; the choice is saved in the browser.
 
 If `npm install` hits permission errors on the global npm cache:
 
@@ -33,4 +33,4 @@ npm install --cache ./.npm-cache
 
 ## Stack
 
-React 19, TypeScript, Vite, react-router-dom.
+React 19, TypeScript, Vite, Tailwind CSS v4, react-router-dom. Styling uses semantic tokens and `dark:` mode (class on `html`) with light, dark, and system options.

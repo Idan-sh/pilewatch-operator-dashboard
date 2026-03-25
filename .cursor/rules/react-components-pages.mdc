@@ -1,0 +1,39 @@
+---
+description: React pages, components, routing, and hooks
+globs: "**/*.tsx"
+alwaysApply: false
+---
+
+# React structure
+
+## Pages (`src/pages/`)
+
+- One default export per file matching the route purpose (e.g. `SitesPage.tsx`).
+- Pages **orchestrate**: fetch/list data via accessors from `src/data`, render sections; avoid embedding large constant data in JSX.
+- Use **semantic HTML**: `main` content is provided by the shell (`App.tsx`); pages should use headings in order (`h1` → `h2` → `h3`).
+
+## Components (`src/components/`)
+
+- Extract when reused or when a page exceeds ~200 lines of JSX for one concern.
+- Pass **narrow props** (ids, labels, callbacks) instead of entire domain graphs unless necessary.
+- Prefer **controlled patterns** for forms; theme uses context + `useTheme()` from `src/theme/useTheme.ts`.
+
+## Routing
+
+- Declared in `src/main.tsx` with `react-router-dom`; layout lives in `App.tsx` with `<Outlet />`.
+- **NavLink**: use `className` as a function with `isActive` for active styles; keep focus-visible styles for keyboard users.
+
+## Hooks
+
+- UI-only state (`useState`, `useMemo` for derived view models) belongs in the page/component.
+- Cross-cutting state (theme) uses **React context** in `src/theme/` — do not duplicate theme logic in random components.
+
+## Callbacks, memoization, and JSX props
+
+- **Do not** pass **new function expressions** in JSX on every render (`onClick={() => ...}`, `onChange={() => ...}`) — they break referential equality and can force extra child re-renders.
+- **Do** use one of:
+  - **`useCallback`** in the component for handlers passed to children or native elements (deps array must include any values from scope that the handler closes over).
+  - A **stable module-level function** for things like `NavLink`’s `className={getNavLinkClassName}` (same function identity every render).
+  - **Event delegation** on a parent (`onClick` on `<ul>` + `data-*` on children + `closest()`), with a single `useCallback` handler — good for lists of many buttons.
+- **`useMemo`**: use for **non-trivial derived values** from props/state (filtered lists, maps, formatted strings used as props) and when passing **object/array** literals would otherwise be recreated each render. Primitive `aria-label` strings derived from state can be `useMemo` for consistency.
+- Context values (`ThemeProvider`) should expose **stable** `setState` functions via **`useCallback`** so consumers can list them in dependency arrays safely.

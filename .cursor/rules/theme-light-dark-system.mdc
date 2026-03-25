@@ -1,0 +1,28 @@
+---
+description: Theme preference — Light, Dark, System, storage, and FOUC
+globs: "src/theme/**/*"
+alwaysApply: false
+---
+
+# Theme system
+
+## Behavior
+
+- User-selectable **Light**, **Dark**, and **System** (follow `prefers-color-scheme` when System).
+- Persist preference in **`localStorage`** under key **`agriq-theme`** (see `src/theme/themeShared.ts`).
+- Apply resolved theme to **`document.documentElement`**: toggle class **`dark`**, set **`colorScheme`** style for native controls.
+
+## File roles
+
+- **`themeShared.ts`**: pure helpers (`resolveTheme`, `applyResolvedToDom`, storage read) — no React.
+- **`context.ts`**: `createContext` only (keeps Fast Refresh happy with ESLint).
+- **`ThemeProvider.tsx`**: state, effects, `matchMedia` subscription when preference is System.
+- **`useTheme.ts`**: single hook to read/update preference.
+
+## First paint
+
+- **`index.html`** may include a small inline script that reads `localStorage` and sets `dark` / `color-scheme` before React loads to reduce flash (FOUC).
+
+## UI
+
+- Theme control lives in the **header** (e.g. `ThemeSelect`) with a visible label and/or `aria-label` on the control.

@@ -1,0 +1,26 @@
+---
+description: Accessibility patterns for operator-facing dashboard UI
+globs: "**/*.tsx"
+alwaysApply: false
+---
+
+# Accessibility (operators)
+
+## Baseline
+
+- **Skip link** to main content (`#main-content`) where the shell provides it; main landmark identifiable.
+- **Focus**: keyboard users must see focus on nav, theme control, pile buttons, and links (`focus-visible` rings).
+- **Color**: do not rely on color alone for status — pair with text labels (e.g. “OK”, “Warning”, “Critical”) or icons + text.
+
+## Dynamic content
+
+- For alert lists or live counts, use **`aria-live`** appropriately (`polite` for non-urgent updates); avoid `assertive` unless truly interruptive.
+
+## Forms and controls
+
+- **Labels**: every `select`/`input` has a `<label>` or `aria-label`.
+- **Nav**: `aria-label` on `<nav>` where multiple navs exist; **NavLink** active state exposes `aria-current` via router.
+
+## Language
+
+- Prefer **plain language** in user-visible strings (especially “what to do next” on alerts). Avoid internal jargon unless the assignment uses it.

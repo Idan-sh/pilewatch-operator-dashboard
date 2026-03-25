@@ -1,0 +1,27 @@
+---
+description: TypeScript and domain type placement (src/types)
+globs: "**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# TypeScript and types
+
+## Domain types live in `src/types/`
+
+- Split by concern when it helps clarity: e.g. `sensor.ts`, `pile.ts`, `alert.ts`, `theme.ts` (`ThemePreference`, `ResolvedTheme` — app UI, not domain grain data).
+- Re-export from `src/types/index.ts` so consumers can `import type { … } from '../types'`.
+- **Do not** define shared domain interfaces inside `mockData.ts` or page files — add or extend types in `src/types` and import them.
+
+## Imports
+
+- Use `import type { … }` for type-only imports (keeps bundles clean and intent clear).
+- Prefer **interfaces** for object shapes that may be extended; **union types** for closed sets (`PileStatus`, `SensorLayer`).
+
+## Naming
+
+- **Pile**: `PileMock` (or rename to `Pile` in types if you drop the “Mock” suffix project-wide — stay consistent).
+- **Sensors**: IDs like `S01`…`S30` as strings; layers `bottom` | `middle` | `top`.
+
+## Future-proofing
+
+- If you add a real API later, keep `src/types` as the contract layer; mappers can map DTO → domain types in a `services/` or `api/` folder without rewriting pages.

@@ -4,7 +4,28 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>agriq-operator-dashboard</title>
+    <title>agriQ Operator</title>
+    <script>
+      ;(function () {
+        var k = 'agriq-theme'
+        var resolved = 'light'
+        try {
+          var v = localStorage.getItem(k)
+          if (v === 'dark') resolved = 'dark'
+          else if (v === 'light') resolved = 'light'
+          else if (
+            window.matchMedia &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches
+          )
+            resolved = 'dark'
+        } catch (e) {
+          /* ignore */
+        }
+        var root = document.documentElement
+        root.classList.toggle('dark', resolved === 'dark')
+        root.style.colorScheme = resolved
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

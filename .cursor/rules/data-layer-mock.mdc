@@ -1,0 +1,28 @@
+---
+description: Mock data, getters, and separation from UI types
+globs: "src/data/**/*"
+alwaysApply: false
+---
+
+# Data layer (`src/data/`)
+
+## Responsibility
+
+- Hold **mock constants** (e.g. PDF table values) and **pure functions** that return domain objects or lists: `getPiles()`, `getPileById(id)`, `getActiveAlerts()`.
+- Import types from **`src/types`**, not the other way around.
+
+## Rules
+
+- **No JSX** in `src/data`.
+- Keep builders/helpers **pure** (same inputs → same outputs) to ease swap-in of API calls later.
+- **Alerts**: derive or list explicitly in one place (`getActiveAlerts`) so the Alerts page and nav badge stay consistent.
+
+## Adding new fields
+
+1. Extend the relevant type in `src/types/`.
+2. Update mock constructors and any getters.
+3. Update UI that displays the new field.
+
+## Out of scope (Task 2)
+
+- No `fetch`, WebSockets, or env-based API URLs unless the assignment scope changes.

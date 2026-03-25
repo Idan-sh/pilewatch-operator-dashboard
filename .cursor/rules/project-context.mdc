@@ -1,0 +1,29 @@
+---
+description: agriQ operator dashboard — stack, goals, and source layout
+alwaysApply: true
+---
+
+# Project context
+
+This repo is the **Task 2 — Operator Dashboard** for the agriQ take-home: a **React SPA** with **mock data only** (no backend in scope for Task 2).
+
+## Stack
+
+- **React 19**, **TypeScript**, **Vite**, **react-router-dom**
+- **Tailwind CSS v4** via `@tailwindcss/vite` — styling is utility-first; avoid new global CSS except `src/index.css` (tokens, `@theme`, dark variant).
+
+## Source layout (do not flatten without reason)
+
+| Area | Purpose |
+|------|---------|
+| `src/types/` | Shared types (`PileMock`, `SensorReading`, `OperatorAlert`, `ThemePreference`, …). **No runtime code.** |
+| `src/data/` | Mock data and pure accessors (`getPiles`, `getPileById`, `getActiveAlerts`). Imports types from `src/types`. |
+| `src/pages/` | Route-level screens (`SitesPage`, `AlertsPage`). Compose UI; keep business rules in data layer or shared helpers. |
+| `src/components/` | Reusable UI (e.g. `ThemeSelect`). Prefer small, focused components. |
+| `src/theme/` | Theme preference, context, `localStorage`, sync with `document.documentElement`. |
+
+## Principles
+
+- **Operators first**: copy and layout should work for non-technical grain storage staff (clear labels, actionable alerts).
+- **Single source of truth**: pile/sensor/alert shapes live in `src/types`; mock values and derived lists live in `src/data`.
+- **Prefer explicit imports** over barrel abuse; `src/types/index.ts` is the public type entry for cross-feature reuse.

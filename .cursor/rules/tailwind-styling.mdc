@@ -1,0 +1,26 @@
+---
+description: Tailwind v4, design tokens, and UI styling conventions
+globs: "**/*.tsx"
+alwaysApply: false
+---
+
+# Styling (Tailwind)
+
+## Tokens, not ad-hoc colors
+
+- Use **semantic utilities** tied to `src/index.css` `@theme` / CSS variables: `bg-background`, `text-foreground`, `text-muted-foreground`, `border-border`, `bg-card`, accents, **status** colors (`text-status-ok`, `text-status-warn`, `text-status-critical`, etc.).
+- Avoid raw hex/rgb in class strings unless adding a new token in `index.css` first.
+
+## Dark mode
+
+- Use the **`dark:`** variant; the app drives theme via class **`dark`** on `<html>` (see theme rules). Do not rely only on `prefers-color-scheme` in components.
+
+## Layout and density
+
+- Prefer **flex/grid** + `gap-*`, responsive breakpoints (`sm:`, `lg:`), and `max-w-*` for readable line length on operator-facing copy.
+- Interactive elements need visible **focus** styles (`focus-visible:ring-*`, `focus:outline-none` paired with ring).
+
+## What not to do
+
+- No `src/App.css`-style global component sheets; no styled-components unless the team explicitly changes stack.
+- Do not strip `aria-*` or headings to “save space” — this is an operator dashboard.
