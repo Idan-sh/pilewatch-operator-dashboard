@@ -2,6 +2,8 @@
 
 **Task 2 - Operator Dashboard** (agriQ full-stack take-home): a React frontend that uses **mock data only** (no backend). It shows storage sites, piles, sensor readings, and alerts.
 
+![Intro — dashboard overview](./docs/screenshots/intro.png)
+
 ## Prerequisites
 
 - **Node.js** 20 or later - [nodejs.org](https://nodejs.org/)
@@ -21,6 +23,26 @@ If `npm install` hits permission errors on the global npm cache:
 ```bash
 npm install --cache ./.npm-cache
 ```
+
+## Screenshots
+
+Add PNG or JPG files under [`docs/screenshots/`](./docs/screenshots/) with these names so the images above and below render on GitHub:
+
+| File | Suggested content |
+| --- | --- |
+| `intro.png` | Wide hero shot: header + main area (any theme) |
+| `sites.png` | **Sites** — site selector, piles, sensor grid |
+| `alerts.png` | **Alerts** — summary, filters, table |
+
+Until the files exist, GitHub may show a broken image icon.
+
+### Sites
+
+![Sites — storage, piles, sensors](./docs/screenshots/sites.png)
+
+### Alerts
+
+![Alerts — open issues and next steps](./docs/screenshots/alerts.png)
 
 ## Scripts
 
