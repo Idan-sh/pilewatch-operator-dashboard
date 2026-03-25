@@ -7,7 +7,7 @@ import { getStatusPillToneClasses } from "./ui/statusPill";
 /** Stable reference for `NavLink` `className` (not recreated each render). */
 function getNavLinkClassName({ isActive }: { isActive: boolean }) {
   return [
-    "inline-flex items-center gap-2 rounded-control px-3 py-1.5 text-sm no-underline transition-colors",
+    "inline-flex cursor-pointer items-center gap-2 rounded-control px-3 py-1.5 text-sm no-underline transition-colors",
     "focus-visible:ring-accent focus-visible:ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
     isActive
       ? "border-border bg-accent-soft text-foreground border"
