@@ -23,4 +23,4 @@ alwaysApply: false
 ## What not to do
 
 - No `src/App.css`-style global component sheets; no styled-components unless the team explicitly changes stack.
-- Do not strip `aria-*` or headings to “save space” — this is an operator dashboard.
+- Do not strip `aria-*` or headings to “save space” - this is an operator dashboard.

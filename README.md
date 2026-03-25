@@ -1,10 +1,10 @@
 # agriQ Operator Dashboard
 
-**Task 2 — Operator Dashboard** (agriQ full-stack take-home): a React frontend that uses **mock data only** (no backend). It shows storage sites, piles, sensor readings, and alerts.
+**Task 2 - Operator Dashboard** (agriQ full-stack take-home): a React frontend that uses **mock data only** (no backend). It shows storage sites, piles, sensor readings, and alerts.
 
 ## Prerequisites
 
-- **Node.js** 20 or later — [nodejs.org](https://nodejs.org/)
+- **Node.js** 20 or later - [nodejs.org](https://nodejs.org/)
 - **npm** (ships with Node)
 
 ## Install and run

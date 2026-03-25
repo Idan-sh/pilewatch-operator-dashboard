@@ -25,26 +25,26 @@ New folders under `src/` should stay **lowercase** (`pages`, `types`, `data`, `t
 
 - **Default export** for page and feature components; name should **match the filename** (e.g. file `ThemeSelect.tsx` → `export default function ThemeSelect`).
 - **Props** type: `ComponentNameProps` (e.g. `ThemeSelectProps`) when you need an explicit type.
-- **Event handlers**: name with **`handle` + purpose** — `handlePileSelect`, `handleThemeChange`, `handlePileListClick`. Define with **`useCallback`** (or module-level + delegation) — **never** `onClick={() => doThing(id)}` inline in JSX (recreated every render).
-- **Class name / style helpers** (not components): **`get` + noun + `ClassName`** — `getNavLinkClassName` (may live at module scope for a stable reference to `NavLink`).
+- **Event handlers**: name with **`handle` + purpose** - `handlePileSelect`, `handleThemeChange`, `handlePileListClick`. Define with **`useCallback`** (or module-level + delegation) - **never** `onClick={() => doThing(id)}` inline in JSX (recreated every render).
+- **Class name / style helpers** (not components): **`get` + noun + `ClassName`** - `getNavLinkClassName` (may live at module scope for a stable reference to `NavLink`).
 
 ## TypeScript symbols
 
-- **Interfaces / type aliases** for domain models: **PascalCase** — `PileMock`, `SensorReading`, `OperatorAlert`, `ThemePreference`.
-- **Union members** for fixed sets: match domain vocabulary — `'OK' | 'Warning' | 'Critical'`, `'bottom' | 'middle' | 'top'`.
-- **Functions** (including getters): **camelCase** — `getPiles`, `getPileById`, `resolveTheme`, `buildSensors`.
-- **Boolean** variables: **`is` / `has` / `should`** — `isActive`, `hasAlerts`, `shouldRefetch`.
-- **Constants** (immutable, module-level): **SCREAMING_SNAKE** — `THEME_STORAGE_KEY`, `MOCK_PILES`. Prefer one object or `as const` for grouped config if it reads better.
+- **Interfaces / type aliases** for domain models: **PascalCase** - `PileMock`, `SensorReading`, `OperatorAlert`, `ThemePreference`.
+- **Union members** for fixed sets: match domain vocabulary  - `'OK' | 'Warning' | 'Critical'`, `'bottom' | 'middle' | 'top'`.
+- **Functions** (including getters): **camelCase** - `getPiles`, `getPileById`, `resolveTheme`, `buildSensors`.
+- **Boolean** variables: **`is` / `has` / `should`** - `isActive`, `hasAlerts`, `shouldRefetch`.
+- **Constants** (immutable, module-level): **SCREAMING_SNAKE** - `THEME_STORAGE_KEY`, `MOCK_PILES`. Prefer one object or `as const` for grouped config if it reads better.
 
 ## Domain (agriQ)
 
-- **Sensor IDs**: assignment format **`S01`–`S30`** (zero-padded), stored as **strings**.
-- **Pile slugs / route ids**: **kebab-case** — `emek-north`, `emek-south` (match `PileMock.id`).
-- **User-facing labels**: **Title Case** or sentence case per product copy — e.g. “Emek North”, “What to do next”.
+- **Sensor IDs**: assignment format **`S01`-`S30`** (zero-padded), stored as **strings**.
+- **Pile slugs / route ids**: **kebab-case** - `emek-north`, `emek-south` (match `PileMock.id`).
+- **User-facing labels**: **Title Case** or sentence case per product copy - e.g. “Emek North”, “What to do next”.
 
 ## Imports
 
-- Prefer **named `import type`** for types from `src/types` — keeps value vs type imports obvious.
+- Prefer **named `import type`** for types from `src/types`  - keeps value vs type imports obvious.
 - Avoid default-exporting types from `mockData.ts`; types come from **`src/types`**.
 
 ## What to avoid

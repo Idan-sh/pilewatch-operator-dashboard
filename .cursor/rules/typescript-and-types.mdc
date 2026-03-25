@@ -8,9 +8,9 @@ alwaysApply: false
 
 ## Domain types live in `src/types/`
 
-- Split by concern when it helps clarity: e.g. `sensor.ts`, `pile.ts`, `alert.ts`, `theme.ts` (`ThemePreference`, `ResolvedTheme` — app UI, not domain grain data).
+- Split by concern when it helps clarity: e.g. `sensor.ts`, `pile.ts`, `alert.ts`, `theme.ts` (`ThemePreference`, `ResolvedTheme` - app UI, not domain grain data).
 - Re-export from `src/types/index.ts` so consumers can `import type { … } from '../types'`.
-- **Do not** define shared domain interfaces inside `mockData.ts` or page files — add or extend types in `src/types` and import them.
+- **Do not** define shared domain interfaces inside `mockData.ts` or page files - add or extend types in `src/types` and import them.
 
 ## Imports
 
@@ -19,7 +19,7 @@ alwaysApply: false
 
 ## Naming
 
-- **Pile**: `PileMock` (or rename to `Pile` in types if you drop the “Mock” suffix project-wide — stay consistent).
+- **Pile**: `PileMock` (or rename to `Pile` in types if you drop the “Mock” suffix project-wide - stay consistent).
 - **Sensors**: IDs like `S01`…`S30` as strings; layers `bottom` | `middle` | `top`.
 
 ## Future-proofing

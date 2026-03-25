@@ -1,5 +1,5 @@
 ---
-description: src/index.css — Tailwind entry, @theme tokens, dark variant only
+description: src/index.css - Tailwind entry, @theme tokens, dark variant only
 globs: "src/index.css"
 alwaysApply: false
 ---
@@ -13,6 +13,6 @@ alwaysApply: false
 
 ## Rules
 
-- Do not add page-specific layout rules here — use Tailwind in components.
+- Do not add page-specific layout rules here - use Tailwind in components.
 - New brand or status colors: add a **CSS variable** in `:root` and `.dark`, then wire **`@theme --color-*`** so utilities like `bg-background` stay available.
 - Keep **typography defaults** minimal (`html`, `body`, `#root`); prefer component utilities for one-off sizes.

@@ -3,7 +3,10 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  /* Inter - common for analytics / operator dashboards; loaded from Google Fonts in index.html */
+  --font-sans:
+    Inter, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
 
   --color-background: var(--app-bg);
   --color-foreground: var(--app-fg);

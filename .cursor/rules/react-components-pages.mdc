@@ -26,14 +26,14 @@ alwaysApply: false
 ## Hooks
 
 - UI-only state (`useState`, `useMemo` for derived view models) belongs in the page/component.
-- Cross-cutting state (theme) uses **React context** in `src/theme/` — do not duplicate theme logic in random components.
+- Cross-cutting state (theme) uses **React context** in `src/theme/` - do not duplicate theme logic in random components.
 
 ## Callbacks, memoization, and JSX props
 
-- **Do not** pass **new function expressions** in JSX on every render (`onClick={() => ...}`, `onChange={() => ...}`) — they break referential equality and can force extra child re-renders.
+- **Do not** pass **new function expressions** in JSX on every render (`onClick={() => ...}`, `onChange={() => ...}`) - they break referential equality and can force extra child re-renders.
 - **Do** use one of:
   - **`useCallback`** in the component for handlers passed to children or native elements (deps array must include any values from scope that the handler closes over).
   - A **stable module-level function** for things like `NavLink`’s `className={getNavLinkClassName}` (same function identity every render).
-  - **Event delegation** on a parent (`onClick` on `<ul>` + `data-*` on children + `closest()`), with a single `useCallback` handler — good for lists of many buttons.
+  - **Event delegation** on a parent (`onClick` on `<ul>` + `data-*` on children + `closest()`), with a single `useCallback` handler - good for lists of many buttons.
 - **`useMemo`**: use for **non-trivial derived values** from props/state (filtered lists, maps, formatted strings used as props) and when passing **object/array** literals would otherwise be recreated each render. Primitive `aria-label` strings derived from state can be `useMemo` for consistency.
 - Context values (`ThemeProvider`) should expose **stable** `setState` functions via **`useCallback`** so consumers can list them in dependency arrays safely.

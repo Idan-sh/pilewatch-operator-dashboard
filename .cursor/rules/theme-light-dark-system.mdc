@@ -1,5 +1,5 @@
 ---
-description: Theme preference — Light, Dark, System, storage, and FOUC
+description: Theme preference - Light, Dark, System, storage, and FOUC
 globs: "src/theme/**/*"
 alwaysApply: false
 ---
@@ -14,7 +14,7 @@ alwaysApply: false
 
 ## File roles
 
-- **`themeShared.ts`**: pure helpers (`resolveTheme`, `applyResolvedToDom`, storage read) — no React.
+- **`themeShared.ts`**: pure helpers (`resolveTheme`, `applyResolvedToDom`, storage read) - no React.
 - **`context.ts`**: `createContext` only (keeps Fast Refresh happy with ESLint).
 - **`ThemeProvider.tsx`**: state, effects, `matchMedia` subscription when preference is System.
 - **`useTheme.ts`**: single hook to read/update preference.

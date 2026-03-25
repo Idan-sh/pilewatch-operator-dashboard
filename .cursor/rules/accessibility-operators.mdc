@@ -10,7 +10,7 @@ alwaysApply: false
 
 - **Skip link** to main content (`#main-content`) where the shell provides it; main landmark identifiable.
 - **Focus**: keyboard users must see focus on nav, theme control, pile buttons, and links (`focus-visible` rings).
-- **Color**: do not rely on color alone for status — pair with text labels (e.g. “OK”, “Warning”, “Critical”) or icons + text.
+- **Color**: do not rely on color alone for status - pair with text labels (e.g. “OK”, “Warning”, “Critical”) or icons + text.
 
 ## Dynamic content
 
