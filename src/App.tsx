@@ -30,12 +30,15 @@ export default function App() {
       >
         Skip to main content
       </a>
-      <header className="border-border flex flex-wrap items-center justify-between gap-4 border-b px-5 py-4">
-        <p className="text-foreground m-0 text-lg font-semibold tracking-tight">
-          agriQ Operator
-        </p>
-        <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-          <nav className="flex gap-2" aria-label="Main">
+      <header className="border-border flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-b px-5 py-4">
+        <div className="flex min-w-0 flex-wrap items-center gap-x-6 gap-y-2">
+          <p className="text-foreground m-0 shrink-0 text-lg font-semibold tracking-tight">
+            agriQ Operator
+          </p>
+          <nav
+            className="border-border flex gap-1 border-l pl-6 max-sm:w-full max-sm:border-l-0 max-sm:border-t max-sm:pt-2 max-sm:pl-0"
+            aria-label="Main"
+          >
             <NavLink to="/" end className={getNavLinkClassName}>
               Sites
             </NavLink>
@@ -55,8 +58,8 @@ export default function App() {
               ) : null}
             </NavLink>
           </nav>
-          <ThemeSelect />
         </div>
+        <ThemeSelect />
       </header>
       <main
         id="main-content"
