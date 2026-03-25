@@ -1,13 +1,9 @@
 import { useMemo } from "react";
 import AlertsPanel from "../components/alerts/AlertsPanel";
-import { sortAlertsBySeverityThenPile } from "../domain/alertOrdering";
 import { getActiveAlerts } from "../data/mockData";
 
 export default function AlertsPage() {
-  const alerts = useMemo(
-    () => sortAlertsBySeverityThenPile(getActiveAlerts()),
-    []
-  );
+  const alerts = useMemo(() => getActiveAlerts(), []);
 
   return (
     <div>
@@ -15,8 +11,8 @@ export default function AlertsPage() {
         <div>
           <h1 className="text-foreground text-2xl font-semibold tracking-tight">Alerts</h1>
           <p className="text-muted-foreground mt-1 max-w-2xl text-sm leading-relaxed">
-            Open issues across piles. Critical items sort first. Expand next steps when you are ready
-            to act.
+            Open issues across piles. Sort columns from the table headers, filter by severity, location,
+            or sensors, then expand next steps when you are ready to act.
           </p>
         </div>
       </div>
