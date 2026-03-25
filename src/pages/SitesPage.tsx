@@ -82,10 +82,11 @@ export default function SitesPage() {
         or faulty health.
       </p>
       <p className="text-muted-foreground mb-8 max-w-2xl border-border border-l-2 pl-3 text-xs leading-relaxed">
-        <span className="text-foreground font-medium">Thresholds</span> - Temperature and moisture
-        each use OK / warning / critical bands from the assignment rules. Stronger type weight on a
-        value means a higher band; hover a number for the exact band name. Problem sensors are
-        called out in the grid copy.
+        <span className="text-foreground font-medium">How to read the numbers</span> — Each
+        temperature and moisture value is checked against safe limits. Stronger-looking text means a
+        more serious reading. On desktop, hover a value to open a short label (OK, warning, or
+        critical). The value is underlined with dots and uses a help cursor. Sensors that need
+        attention have a short message under them in the tile.
       </p>
 
       <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">

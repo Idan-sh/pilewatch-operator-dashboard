@@ -46,15 +46,15 @@ export function readingSeverityMutedTextClass(severity: ReadingSeverity): string
   }
 }
 
-/** Short label for tooltips / aria (band name, not the raw number). */
-export function readingSeverityBandLabel(severity: ReadingSeverity): string {
+/** OK / Warning / Critical for tooltips and short UI copy. */
+export function readingSeverityLevelLabel(severity: ReadingSeverity): string {
   switch (severity) {
     case "ok":
-      return "OK band";
+      return "OK";
     case "warning":
-      return "Warning band";
+      return "Warning";
     case "critical":
-      return "Critical band";
+      return "Critical";
     default:
       return "";
   }

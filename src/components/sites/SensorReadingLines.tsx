@@ -1,31 +1,32 @@
 import {
   getMoistureSeverity,
   getTemperatureSeverity,
-  readingSeverityBandLabel,
+  readingSeverityLevelLabel,
   readingSeverityMutedTextClass
 } from "../../domain/sensorThresholds";
 import type { SensorReading } from "../../types";
+import Tooltip from "../Tooltip";
 
 export function TemperatureMetricLine({ celsius }: { celsius: number }) {
   const severity = getTemperatureSeverity(celsius);
+  const tip = `${celsius}°C — ${readingSeverityLevelLabel(severity)} (temperature)`;
   return (
-    <div
-      className={`min-h-5 leading-5 tabular-nums ${readingSeverityMutedTextClass(severity)}`}
-      title={`${celsius}°C - ${readingSeverityBandLabel(severity)} (temperature)`}
-    >
-      {celsius}°C
+    <div className={`min-h-5 leading-5 tabular-nums ${readingSeverityMutedTextClass(severity)}`}>
+      <Tooltip content={tip}>
+        {celsius}°C
+      </Tooltip>
     </div>
   );
 }
 
 export function MoistureMetricLine({ moisturePct }: { moisturePct: number }) {
   const severity = getMoistureSeverity(moisturePct);
+  const tip = `${moisturePct}% moisture — ${readingSeverityLevelLabel(severity)} (moisture)`;
   return (
-    <div
-      className={`min-h-5 leading-5 tabular-nums ${readingSeverityMutedTextClass(severity)}`}
-      title={`${moisturePct}% moisture - ${readingSeverityBandLabel(severity)} (moisture)`}
-    >
-      {moisturePct}% moisture
+    <div className={`min-h-5 leading-5 tabular-nums ${readingSeverityMutedTextClass(severity)}`}>
+      <Tooltip content={tip}>
+        {moisturePct}% moisture
+      </Tooltip>
     </div>
   );
 }
