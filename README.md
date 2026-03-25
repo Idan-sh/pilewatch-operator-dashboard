@@ -1,12 +1,10 @@
 # agriQ Operator Dashboard
 
-**Task 2 - Operator Dashboard** (agriQ full-stack take-home): a React frontend that uses **mock data only** (no backend). It shows storage sites, piles, sensor readings, and alerts.
-
-<img width="1363" height="938" alt="Site Intro screenshot" src="https://github.com/user-attachments/assets/4363d402-0d29-4085-a6a0-5d58b943366b" />
+Web UI for grain storage staff to monitor **sites**, **piles**, **live-style sensor readings**, and **open alerts** in one place. The app is a single-page React client with **mock data** so layouts and workflows can be reviewed without connecting to real hardware or APIs. Operators can switch **light**, **dark**, or **system** theme; the choice persists in the browser.
 
 ## Prerequisites
 
-- **Node.js** 20 or later - [nodejs.org](https://nodejs.org/)
+- **Node.js** 20 or later — [nodejs.org](https://nodejs.org/)
 - **npm** (ships with Node)
 
 ## Install and run
@@ -26,15 +24,29 @@ npm install --cache ./.npm-cache
 
 ## Screenshots
 
-### Sites details:   
-<img width="1363" height="938" alt="Sites details page screenshot" src="https://github.com/user-attachments/assets/424e1ead-532a-4c42-b791-4f3eed47604e" />
+### Intro
 
-### Alerts Table:   
-<img width="1363" height="938" alt="Alerts table page screenshot" src="https://github.com/user-attachments/assets/41cc9bf3-64d0-44ef-be83-e8e2be7a1531" />
+Landing view with the app shell: wordmark, **Sites** / **Alerts** navigation, theme control, and the start of the main content area.
 
-### Filter Alerts:   
-<img width="1363" height="938" alt="Filter alerts section screenshot" src="https://github.com/user-attachments/assets/de8eee48-8714-41da-94cb-8cbfa454e707" />
+<img width="1363" height="938" alt="Intro — app shell and landing content" src="https://github.com/user-attachments/assets/4363d402-0d29-4085-a6a0-5d58b943366b" />
 
+### Sites
+
+**Sites** workspace: pick a storage site, filter piles by status, choose a pile, and inspect sensor tiles and detail for the selection.
+
+<img width="1363" height="938" alt="Sites — site selector, pile list, and sensor detail" src="https://github.com/user-attachments/assets/424e1ead-532a-4c42-b791-4f3eed47604e" />
+
+### Alerts
+
+**Alerts** page with a sortable table of active issues, severity cues, and expandable **Next steps** for each row.
+
+<img width="1363" height="938" alt="Alerts — sortable table and next steps" src="https://github.com/user-attachments/assets/41cc9bf3-64d0-44ef-be83-e8e2be7a1531" />
+
+### Alert filters
+
+Filter and triage alerts (e.g. by severity and context) without losing sight of how many items match.
+
+<img width="1363" height="938" alt="Alerts — filters and summary" src="https://github.com/user-attachments/assets/de8eee48-8714-41da-94cb-8cbfa454e707" />
 
 ## Scripts
 
