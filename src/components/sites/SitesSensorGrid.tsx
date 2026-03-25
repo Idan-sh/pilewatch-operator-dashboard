@@ -1,18 +1,20 @@
 import { useMemo } from "react";
+import { getSensorTileSeverity } from "../../domain/sensorThresholds";
 import type { PileMock, SensorLayer, SensorReading } from "../../types";
 import SensorReadingLines from "./SensorReadingLines";
 
-/** Inset stripe (not border-l) keeps the same inner width as normal tiles so metric lines don’t wrap. */
+/** Inset stripe from threshold bands (same logic as tooltips), not mock `health` alone. */
 function getSensorTileClassName(s: SensorReading): string {
   const base =
     "border-border min-w-0 rounded-surface border bg-card p-3 text-left text-sm transition-colors";
-  if (s.health === "faulty") {
-    return `${base} bg-status-critical/10 shadow-[inset_4px_0_0_0_var(--color-status-critical)]`;
+  switch (getSensorTileSeverity(s)) {
+    case "critical":
+      return `${base} bg-status-critical/10 shadow-[inset_4px_0_0_0_var(--color-status-critical)]`;
+    case "warning":
+      return `${base} bg-status-warn/10 shadow-[inset_4px_0_0_0_var(--color-status-warn)]`;
+    default:
+      return `${base}`;
   }
-  if (s.health === "elevated") {
-    return `${base} bg-status-warn/10 shadow-[inset_4px_0_0_0_var(--color-status-warn)]`;
-  }
-  return `${base}`;
 }
 
 const LAYER_ORDER: SensorLayer[] = ["bottom", "middle", "top"];

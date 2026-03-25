@@ -3,6 +3,8 @@
  * Used for operator-facing color coding on the dashboard.
  */
 
+import type { SensorReading } from "../types";
+
 export type ReadingSeverity = "ok" | "warning" | "critical";
 
 /** Below 30°C OK, 30-45°C warning, above 45°C critical */
@@ -17,6 +19,26 @@ export function getMoistureSeverity(moisturePct: number): ReadingSeverity {
   if (moisturePct < 14) return "ok";
   if (moisturePct <= 17) return "warning";
   return "critical";
+}
+
+function severityRank(s: ReadingSeverity): number {
+  return s === "critical" ? 2 : s === "warning" ? 1 : 0;
+}
+
+/** Worst band when both metrics apply (matches assignment: combined risk). */
+export function worstReadingSeverity(a: ReadingSeverity, b: ReadingSeverity): ReadingSeverity {
+  return severityRank(a) >= severityRank(b) ? a : b;
+}
+
+/** Tile stripe / tint from actual readings (not mock `health` alone), so Critical tooltips match the tile. */
+export function getSensorTileSeverity(s: SensorReading): ReadingSeverity {
+  if (s.health === "faulty") return "critical";
+  const t = s.temperatureC;
+  const m = s.moisturePct;
+  if (t == null && m == null) return "ok";
+  if (t == null) return m != null ? getMoistureSeverity(m) : "ok";
+  if (m == null) return getTemperatureSeverity(t);
+  return worstReadingSeverity(getTemperatureSeverity(t), getMoistureSeverity(m));
 }
 
 export function readingSeverityTextClass(severity: ReadingSeverity): string {
