@@ -1,4 +1,6 @@
 export type { AlertSeverity, OperatorAlert } from './alert'
+export type { PileStatusFilter } from './pileFilter'
+export { PILE_STATUS_FILTER_OPTIONS } from './pileFilter'
 export type { PileMock, PileStatus } from './pile'
 export type { SensorHealth, SensorLayer, SensorReading } from './sensor'
 export type { ResolvedTheme, ThemePreference } from './theme'
