@@ -43,8 +43,8 @@
 }
 
 /*
- * Warm stone neutrals (no cool gray / blue cast). Accent: forest green - reads clearly green,
- * not teal/cyan (which often looks “blue” on displays).
+ * Warm stone neutrals. UI accent = warm stone (focus/selection), not a bright “digital” hue.
+ * Semantic greens/ambers/reds stay on status-* for readings and alerts.
  */
 :root {
   /* Stronger separation: darker canvas vs white cards; darker type + borders. */
@@ -52,8 +52,8 @@
   --app-fg: #0c0a09;
   --app-muted: #57534e;
   --app-border: #d6d3d1;
-  --app-accent: #15803d;
-  --app-accent-soft: rgba(21, 128, 61, 0.2);
+  --app-accent: #44403c;
+  --app-accent-soft: rgba(68, 64, 60, 0.14);
   --app-card: #ffffff;
   --app-code: #e7e5e4;
   --app-status-ok: #14532d;
@@ -68,8 +68,8 @@
   --app-fg: #fafaf9;
   --app-muted: #a8a29e;
   --app-border: #44403c;
-  --app-accent: #4ade80;
-  --app-accent-soft: rgba(74, 222, 128, 0.16);
+  --app-accent: #d6d3d1;
+  --app-accent-soft: rgba(214, 211, 209, 0.18);
   --app-card: #292524;
   --app-code: #33302c;
   --app-status-ok: #4ade80;

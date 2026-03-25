@@ -66,6 +66,7 @@ export default function SitesPileList({
                 "focus-visible:ring-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                 isStatusChip
                   ? [
+                      "rounded-surface border-0 bg-transparent p-0",
                       active
                         ? "ring-2 ring-accent ring-offset-2 ring-offset-background"
                         : "hover:opacity-90"
