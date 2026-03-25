@@ -213,7 +213,7 @@ export default function AlertsPanel({ alerts }: AlertsPanelProps) {
           pileId: a.pileId,
           pileName: a.pileName,
           siteName: a.siteName,
-          label: `${a.siteName} - ${a.pileName}`
+          label: a.pileName
         });
       }
     }

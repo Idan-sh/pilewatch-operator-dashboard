@@ -118,6 +118,7 @@ const emekWest: PileMock = {
 const emekHeferHarish7: SiteMock = {
   id: EMEK_HEFER_HARISH_7_ID,
   name: "Emek Hefer - Harish 7",
+  shortName: "Emek Hefer",
   locationLine: "Emek Hefer Industrial Park, Israel",
   cellFootprintLabel: "50m × 25m × 10m high",
   piles: [emekNorth, emekSouth, emekEast, emekWest]
@@ -152,7 +153,7 @@ export function getPileById(id: string): PileMock | undefined {
 
 /** Active alerts derived from the mock scenario (PDF narrative). */
 export function getActiveAlerts(): OperatorAlert[] {
-  const siteName = emekHeferHarish7.name;
+  const siteName = emekHeferHarish7.shortName;
   return [
     {
       id: "alert-south-bottom",
