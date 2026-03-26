@@ -2,6 +2,10 @@
 
 Web UI for grain storage staff to monitor **sites**, **piles**, **live-style sensor readings**, and **open alerts** in one place. The app is a single-page React client with **mock data** so layouts and workflows can be reviewed without connecting to real hardware or APIs. Operators can switch **light**, **dark**, or **system** theme; the choice persists in the browser.
 
+## Live demo
+
+**[https://agri-dashboard.idansh.dev/](https://agri-dashboard.idansh.dev/)** — same UI as running locally; data is still mock-only.
+
 ## Prerequisites
 
 - **Node.js** 20 or later — [nodejs.org](https://nodejs.org/)
@@ -50,12 +54,12 @@ Filter and triage alerts (e.g. by severity and context) without losing sight of 
 
 ## Scripts
 
-| Command | Description |
-| --- | --- |
-| `npm run dev` | Development server (Vite) |
-| `npm run build` | Typecheck + production build → `dist/` |
-| `npm run preview` | Serve `dist/` locally |
-| `npm run lint` | ESLint |
+| Command           | Description                            |
+| ----------------- | -------------------------------------- |
+| `npm run dev`     | Development server (Vite)              |
+| `npm run build`   | Typecheck + production build → `dist/` |
+| `npm run preview` | Serve `dist/` locally                  |
+| `npm run lint`    | ESLint                                 |
 
 ## Stack
 
