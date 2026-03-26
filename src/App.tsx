@@ -22,16 +22,18 @@ export default function App() {
       >
         Skip to main content
       </a>
-      <header className="border-border bg-background z-40 flex shrink-0 flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b px-4 py-3">
-        <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-1.5">
-          <p className="font-display text-foreground m-0 shrink-0 text-xl font-bold tracking-tight sm:text-[1.375rem]">
-            agriQ Operator
-          </p>
-          <MainNav alertCount={alertCount} alertsNavAriaLabel={alertsNavAriaLabel} />
-        </div>
-        <div className="flex shrink-0 items-center gap-3">
-          <UserAvatarPlaceholder />
-          <ThemeSelect />
+      <header className="border-border bg-background z-40 shrink-0 border-b">
+        <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-5 py-3">
+          <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-1.5">
+            <p className="font-display text-foreground m-0 shrink-0 text-xl font-bold tracking-tight sm:text-[1.375rem]">
+              agriQ Operator
+            </p>
+            <MainNav alertCount={alertCount} alertsNavAriaLabel={alertsNavAriaLabel} />
+          </div>
+          <div className="flex shrink-0 items-center gap-3">
+            <UserAvatarPlaceholder />
+            <ThemeSelect />
+          </div>
         </div>
       </header>
       <div className="min-h-0 flex-1 overflow-x-hidden overflow-y-auto">
