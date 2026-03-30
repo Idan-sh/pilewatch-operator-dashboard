@@ -16,10 +16,11 @@ alwaysApply: true
 | Hooks | **camelCase**, `use` prefix | `useTheme.ts` |
 | Context / providers | **PascalCase** for provider file | `ThemeProvider.tsx` |
 | Plain modules (no component) | **camelCase** | `mockData.ts`, `themeShared.ts`, `context.ts` |
+| Utils (shared, non-UI) | **`src/utils/`** + descriptive **camelCase** | `tooltipPosition.ts` — not a single generic `utils.ts` |
 | Domain types (per file) | **lowercase** domain noun | `sensor.ts`, `pile.ts`, `alert.ts`, `theme.ts` |
 | Type barrel | `index.ts` | Re-exports only |
 
-New folders under `src/` should stay **lowercase** (`pages`, `types`, `data`, `theme`, `components`).
+New folders under `src/` should stay **lowercase** (`pages`, `types`, `data`, `theme`, `components`, `utils`).
 
 ## React
 
@@ -50,4 +51,4 @@ New folders under `src/` should stay **lowercase** (`pages`, `types`, `data`, `t
 ## What to avoid
 
 - Abbreviated cryptic names (`mgr`, `tmp2`) in anything but the shortest loop indices.
-- **Generic** file names (`utils.ts`, `helpers.ts`) unless the folder already scopes them; prefer `themeShared.ts`-style specificity.
+- **Generic** catch-all files at the root of a folder (`utils.ts`, `helpers.ts`). Put shared helpers under **`src/utils/`** with a **specific** filename per concern (`tooltipPosition.ts`, not `utils.ts`).

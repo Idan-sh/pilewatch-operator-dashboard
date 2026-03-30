@@ -1,5 +1,6 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { createPortal } from "react-dom";
+import { getTooltipViewportPosition } from "../utils/tooltipPosition";
 import {
   PANEL_MOTION_TRANSITION,
   REDUCED_MOTION_TRANSITION
@@ -49,21 +50,13 @@ export default function Tooltip({ content, children, variant = "default" }: Tool
     const layer = layerRef.current;
     const inner = innerRef.current;
     if (!el || !layer || !inner) return;
-    const r = el.getBoundingClientRect();
-    const gap = 8;
-    const margin = 8;
-    const estHeight = 56;
-    let top = r.bottom + gap;
-    let left = r.left + r.width / 2;
-    let transform = "translateX(-50%)";
-
-    if (top + estHeight > window.innerHeight - margin && r.top > estHeight + gap) {
-      top = r.top - gap;
-      transform = "translate(-50%, -100%)";
-    }
-
-    left = Math.max(margin, Math.min(left, window.innerWidth - margin));
-
+    const { top, left, transform } = getTooltipViewportPosition(
+      el.getBoundingClientRect(),
+      inner.offsetWidth,
+      inner.offsetHeight,
+      window.innerWidth,
+      window.innerHeight
+    );
     layer.style.top = `${top}px`;
     layer.style.left = `${left}px`;
     inner.style.transform = transform;

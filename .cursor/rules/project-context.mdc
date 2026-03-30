@@ -20,6 +20,7 @@ This repo is the **Task 2 - Operator Dashboard** take-home: a **React SPA** with
 | `src/data/` | Mock data and pure accessors (`getPiles`, `getPileById`, `getActiveAlerts`). Imports types from `src/types`. |
 | `src/pages/` | Route-level screens (`SitesPage`, `AlertsPage`). Compose UI; keep business rules in data layer or shared helpers. |
 | `src/components/` | Reusable UI (e.g. `ThemeSelect`). Prefer small, focused components. |
+| `src/utils/` | Shared non-UI helpers (pure functions, DOM/layout math). One concern per file (e.g. `tooltipPosition.ts`). |
 | `src/theme/` | Theme preference, context, `localStorage`, sync with `document.documentElement`. |
 
 ## Principles
