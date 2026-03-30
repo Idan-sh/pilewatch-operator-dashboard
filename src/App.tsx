@@ -42,6 +42,13 @@ export default function App() {
     return () => ro.disconnect();
   }, []);
 
+  // Reset scroll instantly when navigating between pages.
+  useLayoutEffect(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    el.scrollTo({ top: 0, behavior: "auto" });
+  }, [pathname]);
+
   const { scrollY } = useScroll({ container: scrollContainerRef, axis: "y" });
   useMotionValueEvent(scrollY, "change", (current) => {
     if (reducedMotion) return;
