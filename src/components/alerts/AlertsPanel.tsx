@@ -24,6 +24,19 @@ function severityLabel(severity: OperatorAlert["severity"]): string {
   return severity === "critical" ? "Critical" : "Warning";
 }
 
+function SensorIdPill({ tone, sensorId }: { tone: "critical" | "warn"; sensorId: string }) {
+  return (
+    <StatusStripePill
+      tone={tone}
+      variant="chip"
+      showIcon={false}
+      className="font-mono text-[0.7rem] font-semibold"
+    >
+      {sensorId}
+    </StatusStripePill>
+  );
+}
+
 function AlertsSummaryBar({
   totalAlerts,
   displayedAlerts
@@ -113,6 +126,7 @@ function SortableTh({
 function AlertRow({ alert }: { alert: OperatorAlert }) {
   const leftBorder =
     alert.severity === "critical" ? "border-l-status-critical" : "border-l-status-warn";
+  const tone = alertSeverityToTone(alert.severity);
 
   const [isOpen, setIsOpen] = useState(false);
   const [contentHeight, setContentHeight] = useState(0);
@@ -128,7 +142,7 @@ function AlertRow({ alert }: { alert: OperatorAlert }) {
   return (
     <tr className="border-border border-b transition-colors last:border-b-0 hover:bg-card/60">
       <td className={["align-top border-l-4 py-3 pl-4 pr-3", leftBorder].join(" ")}>
-        <StatusStripePill tone={alertSeverityToTone(alert.severity)} className="whitespace-nowrap">
+        <StatusStripePill tone={tone} className="whitespace-nowrap">
           {severityLabel(alert.severity)}
         </StatusStripePill>
       </td>
@@ -171,8 +185,16 @@ function AlertRow({ alert }: { alert: OperatorAlert }) {
           </div>
         </div>
       </td>
-      <td className="text-foreground align-top py-3 pr-4 font-mono text-xs leading-relaxed tabular-nums">
-        {alert.sensorIds.join(", ")}
+      <td className="align-top py-3 pr-4">
+        <div className="flex flex-wrap items-center gap-1.5">
+          {alert.sensorIds.map((sid) => (
+            <SensorIdPill
+              key={sid}
+              tone={tone === "critical" ? "critical" : "warn"}
+              sensorId={sid}
+            />
+          ))}
+        </div>
       </td>
     </tr>
   );
