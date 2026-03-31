@@ -4,7 +4,7 @@ Web UI for grain storage staff to monitor **sites**, **piles**, **live-style sen
 
 ## Live demo
 
-**[https://agri-dashboard.idansh.dev](https://agri-dashboard.idansh.dev/)** - same UI as running locally, data is still mock-only.
+**[https://pilewatch-dashboard.idansh.dev](https://pilewatch-dashboard.idansh.dev)** - same UI as running locally, data is still mock-only.
 
 ## Prerequisites
 
